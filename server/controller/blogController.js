@@ -26,7 +26,7 @@ module.exports.getAllBlogs= async(req,res,next)=>{
         
          const currentPage = req.query.page ? parseInt(req.query.page) : 1;
         const skip= resultPerPage*(currentPage-1);
-        const blogs= await Blog.find().skip(skip).limit(resultPerPage);
+        const blogs= await Blog.find().sort({ createdAt: -1 }).skip(skip).limit(resultPerPage);
         console.log(blogs)
         res.status(200).json({
             success:true,

@@ -14,7 +14,8 @@
     <div class="my-2 blog-section">
         
         <div class="container">
-            <h3 *ngIf="bloglength2()" class="py-3 text-light text-center">No More blogs to Display !!</h3>
+            <h3 *ngIf="!isDataFetched1" class="my-3 text-light text-center">Please wait Data is loading...</h3>
+            <h3 *ngIf="bloglength2() && isDataFetched1" class="py-3 text-light text-center">No More blogs to Display !!</h3>
             <div class=" my-4 card1" *ngFor="let b of blogs" key="b._id">
                 
                 <div class="row card-content">
@@ -46,7 +47,8 @@
         <div class="container">
             <h3 class="py-3 text-center" >Your Blogs </h3>
             <div class="blog-section2-bg">
-            <h5 *ngIf="bloglength()" class="py-3 text-center">No blogs to Display !!</h5>
+                <h3 *ngIf="!isDataFetched2" class="my-3 text-dark text-center">Please wait Data is loading...</h3>
+            <h5 *ngIf="bloglength() && isDataFetched2" class="py-3 text-center">No blogs to Display !!</h5>
             <div class=" my-4 card1" *ngFor="let b of yourBlogs">
                 <div class="row card-content">
                     <div class=" col-lg-10 col-md-10 col-sm-9">

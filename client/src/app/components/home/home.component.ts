@@ -26,7 +26,8 @@ export class HomeComponent {
   public deleteId:any
   public page=1
   public page2=1
-  
+  public isDataFetched1:any
+  public isDataFetched2:any
   public host="https://blogging-3-r70t.onrender.com"
 
   constructor(public router: Router, public http: HttpClient) {
@@ -55,10 +56,11 @@ export class HomeComponent {
  
 
 fetchdata1() {
+  this.isDataFetched1=false
   this.http.get<any>(`${this.host}/api/getallblogs?page=${this.page}`).subscribe({
     next: (res) => {
       this.blogs = res.blogs;
-
+     this.isDataFetched1=true
       console.log(this.blogs);
     },
     error: (error) => {
@@ -68,11 +70,13 @@ fetchdata1() {
 }
 
   fetchdata2(){
+
     if(!this.isTokenAvailable()){
+      this.isDataFetched2=false
       const headers = new HttpHeaders({
         'X-Token': this.token
       });
-   this.http.get<any>(`${this.host}/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>{this.yourBlogs=res.Blogs;})
+   this.http.get<any>(`${this.host}/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>{this.yourBlogs=res.Blogs;this.isDataFetched2=true})
  
     }
   }

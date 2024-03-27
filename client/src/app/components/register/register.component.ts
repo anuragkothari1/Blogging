@@ -47,6 +47,9 @@ export class RegisterComponent {
     console.log(res);if(res.success){
       localStorage.setItem("token",res.token)
     alert("Logged in")
+    setTimeout(() => {
+      localStorage.removeItem("token");
+    }, 3600000);
    
     this.router.navigate(['/home'])
   }
