@@ -29,7 +29,7 @@ export class HomeComponent {
   public host="https://blogging-3-r70t.onrender.com"
 
   constructor(public router: Router, public http: HttpClient) {
-  //  this.fetchdata();
+   this.fetchdata();
    this.blogs = []; 
    this.yourBlogs=[];
 
