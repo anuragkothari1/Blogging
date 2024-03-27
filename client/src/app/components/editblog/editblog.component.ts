@@ -17,6 +17,7 @@ export class EditblogComponent {
 public blog={heading: '',
 content: ''}
   public token:any
+  public host="https://blogging-3-r70t.onrender.com"
 constructor(public route:ActivatedRoute, public http:HttpClient, public router:Router) {
   this.route.params.subscribe(params => {
     this.blogId = params['id'];
@@ -36,7 +37,7 @@ edit(){
     'X-Token': this.token
   });
   console.log("edit clicked")
-  this.http.patch<any>(`http://localhost:3000/api/editblog?blogId=${this.blogId}`, { heading: this.blog.heading, content: this.blog.content },{headers}).subscribe((res)=>{
+  this.http.patch<any>(`${this.host}/api/editblog?blogId=${this.blogId}`, { heading: this.blog.heading, content: this.blog.content },{headers}).subscribe((res)=>{
     console.log(res)
     if(res.success){
       alert("Updated Successfully")
@@ -45,6 +46,6 @@ edit(){
   })
 }}
 fetchdata(){
-  this.http.get<any>(`http://localhost:3000/api/getblogdetails?blogId=${this.blogId}`).subscribe((res)=>{console.log(res); this.blog=res.blog})
+  this.http.get<any>(`${this.host}/api/getblogdetails?blogId=${this.blogId}`).subscribe((res)=>{console.log(res); this.blog=res.blog})
 }
 }

@@ -26,6 +26,7 @@ export class HomeComponent {
   public deleteId:any
   public page=1
   public page2=1
+  public host="https://blogging-3-r70t.onrender.com"
 
   constructor(public router: Router, public http: HttpClient) {
    this.fetchdata();
@@ -53,7 +54,7 @@ export class HomeComponent {
   
 
 fetchdata1() {
-  this.http.get<any>(`http://blogging-3-r70t.onrender.com/api/getallblogs?page=${this.page}`).subscribe({
+  this.http.get<any>(`${this.host}/api/getallblogs?page=${this.page}`).subscribe({
     next: (res) => {
       this.blogs = res.blogs;
       console.log(this.blogs);
@@ -69,7 +70,7 @@ fetchdata1() {
       const headers = new HttpHeaders({
         'X-Token': this.token
       });
-   this.http.get<any>(`http://localhost:3000/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>this.yourBlogs=res.Blogs)
+   this.http.get<any>(`${this.host}/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>this.yourBlogs=res.Blogs)
  
     }
   }
@@ -125,7 +126,7 @@ this.fetchdata2()
       'X-Token': this.token
     });
   
-    this.http.post<any>("http://localhost:3000/api/createblog", { heading: this.heading, content: this.content }, { headers }).subscribe({
+    this.http.post<any>(`${this.host}/api/createblog`, { heading: this.heading, content: this.content }, { headers }).subscribe({
       next: (res) => {
         this.content = "";
         this.heading = "";
@@ -157,7 +158,7 @@ this.fetchdata2()
       'X-Token': this.token
     });
     this.deleteId=deleteId
-    this.http.delete<any>(`http://localhost:3000/api/deleteblog?blogId=${this.deleteId}`,{headers}).subscribe((res)=>{console.log(res); this.fetchdata(); })
+    this.http.delete<any>(`${this.host}/api/deleteblog?blogId=${this.deleteId}`,{headers}).subscribe((res)=>{console.log(res); this.fetchdata(); })
   }
 
   edit(editId:any){

@@ -15,6 +15,7 @@ export class RegisterComponent {
   constructor(private router:Router,private http: HttpClient){
 
   }
+  public host="https://blogging-3-r70t.onrender.com"
   public name:any;
   public email:any
   public password:any
@@ -42,7 +43,7 @@ export class RegisterComponent {
     }
     console.log("hi")
    const userdata={name:this.name,email:this.email,password:this.password}
-   this.http.post<any>("http://localhost:3000/api/register",userdata).subscribe((res)=>{
+   this.http.post<any>(`${this.host}/api/register`,userdata).subscribe((res)=>{
     console.log(res);if(res.success){
       localStorage.setItem("token",res.token)
     alert("Logged in")

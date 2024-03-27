@@ -13,6 +13,7 @@ export class BlogComponent {
   // public blogId="65ffd6aabbdfc3eae78dc204";
   public blogId:any
   public blog:any
+  public host="https://blogging-3-r70t.onrender.com"
 constructor(public route:ActivatedRoute,public http:HttpClient){
   this.route.params.subscribe(params => {
     this.blogId = params['id'];
@@ -21,7 +22,7 @@ constructor(public route:ActivatedRoute,public http:HttpClient){
 this.fetchdata();
 }
 fetchdata(){
-   this.http.get<any>(`http://localhost:3000/api/getblogdetails?blogId=${this.blogId}`).subscribe((res)=>{console.log(res); this.blog=res.blog})
+   this.http.get<any>(`${this.host}/api/getblogdetails?blogId=${this.blogId}`).subscribe((res)=>{console.log(res); this.blog=res.blog})
 }
 
 }

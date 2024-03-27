@@ -18,10 +18,10 @@ export class LoginComponent {
 
   }
   
-
+  public host="https://blogging-3-r70t.onrender.com"
   login(){
     const userdata={email:this.email,password:this.password}
- this.http.post<any>("http://localhost:3000/api/login",userdata).subscribe((res)=>{
+ this.http.post<any>(`${this.host}/api/login`,userdata).subscribe((res)=>{
   console.log(res);
   if(res.success){
     localStorage.setItem("token",res.token)
