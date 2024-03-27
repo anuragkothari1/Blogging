@@ -1,9 +1,15 @@
 {
-    "routes":[{
-        "src":"/",
-        "dest":"/"
-    },{
-        "src":"/home",
-        "dest":"/"
-    }]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "./server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "destination": "/"
+      }
+    ]
+  }
