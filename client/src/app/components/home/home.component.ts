@@ -26,6 +26,7 @@ export class HomeComponent {
   public deleteId:any
   public page=1
   public page2=1
+  
   public host="https://blogging-3-r70t.onrender.com"
 
   constructor(public router: Router, public http: HttpClient) {
@@ -51,12 +52,13 @@ export class HomeComponent {
   //     }
   //   );
   // }
-  
+ 
 
 fetchdata1() {
   this.http.get<any>(`${this.host}/api/getallblogs?page=${this.page}`).subscribe({
     next: (res) => {
       this.blogs = res.blogs;
+
       console.log(this.blogs);
     },
     error: (error) => {
@@ -70,7 +72,7 @@ fetchdata1() {
       const headers = new HttpHeaders({
         'X-Token': this.token
       });
-   this.http.get<any>(`${this.host}/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>this.yourBlogs=res.Blogs)
+   this.http.get<any>(`${this.host}/api/yourblogs?page=${this.page2}`,{ headers }).subscribe(res=>{this.yourBlogs=res.Blogs;})
  
     }
   }
