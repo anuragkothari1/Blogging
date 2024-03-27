@@ -87,7 +87,7 @@
                 <textarea placeholder="Enter Content of Your blog" [(ngModel)]="content" name="content" [disabled]="isTokenAvailable()" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
               <div *ngIf="isTokenAvailable()">
-                   <h5>Login to Write </h5>
+                   <h5 class="text-light">Login to Write </h5>
               </div>
               <div *ngIf="!isTokenAvailable()">
               <button (click)="post()" class="btn btn-primary">Post</button>
