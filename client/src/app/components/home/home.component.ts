@@ -53,7 +53,7 @@ export class HomeComponent {
   
 
 fetchdata1() {
-  this.http.get<any>(`http://localhost:3000/api/getallblogs?page=${this.page}`).subscribe({
+  this.http.get<any>(`http://blogging-3-r70t.onrender.com/api/getallblogs?page=${this.page}`).subscribe({
     next: (res) => {
       this.blogs = res.blogs;
       console.log(this.blogs);
