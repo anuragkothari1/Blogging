@@ -34,6 +34,7 @@
             </div>
             <div class="next-previous">
                 <button [disabled]="isPreviousDisabled()" (click)="previous()" class="btn btn-light">Previous</button>
+                <h6 class="text-center text-light">Page {{page}}</h6>
                 <button [disabled]="isNextDisabled()" (click)="next()" class="btn btn-light">Next</button>
 
             </div>
@@ -65,6 +66,7 @@
             </div>
             <div class="next-previous">
                 <button [disabled]="isPrevious2Disabled()" (click)="previous2()" class="btn btn-dark">Previous</button>
+                <h6 class="text-center text-dark">Page {{page2}}</h6>
                 <button [disabled]="isNext2Disabled()" (click)="next2()" class="btn btn-dark">Next</button>
 
             </div>
